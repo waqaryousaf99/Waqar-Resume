@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Waqar Yousaf — Portfolio</title>
+<link rel="icon" href="data:;base64,iVBORw0KGgo=">
+<style>
+  :root{
+    --bg:#0f1724; --card:#0b1220; --accent1:#7c3aed; --accent2:#06b6d4;
+    --muted:#94a3b8; --glass: rgba(255,255,255,0.03);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:linear-gradient(180deg,#071126 0%, #07132a 100%); color:#e6eef8; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;}
+  .wrap{max-width:1100px;margin:28px auto;padding:20px;}
+  .grid{display:grid;grid-template-columns:320px 1fr;gap:24px;}
+  .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); border-radius:14px; padding:20px; box-shadow: 0 10px 30px rgba(2,6,23,0.6); border:1px solid rgba(255,255,255,0.03);}
+  .profile{ text-align:center; }
+  .avatar{width:120px;height:120px;border-radius:18px;background:linear-gradient(135deg,var(--accent1),var(--accent2));display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:28px;color:white;box-shadow:0 6px 18px rgba(124,58,237,0.18);}
+  h1{margin:12px 0 6px;font-size:22px;letter-spacing:0.2px}
+  p.lead{margin:6px 0;color:var(--muted);font-size:14px}
+  .contact{margin-top:14px;text-align:left;font-size:14px}
+  .contact a{color:var(--accent2);text-decoration:none}
+  .skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .skill{padding:8px 12px;border-radius:999px;background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); cursor:pointer;border:1px solid rgba(255,255,255,0.03); transition:transform .18s, box-shadow .18s; color:#dfe9f6}
+  .skill:hover{transform:translateY(-4px); box-shadow:0 8px 30px rgba(3,7,18,0.6)}
+  .skill.active{background:linear-gradient(90deg,var(--accent1),var(--accent2)); color:white; box-shadow:0 10px 30px rgba(6,182,212,0.12); transform:translateY(-6px)}
+  .section{margin-bottom:18px}
+  .title{display:flex;align-items:center;justify-content:space-between}
+  h2{font-size:16px;margin:0;color:#dff0ff}
+  .job{margin-top:12px;padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));border:1px solid rgba(255,255,255,0.02)}
+  .job small{color:var(--muted);display:block;margin-top:6px;font-size:13px;line-height:1.4}
+  .actions{display:flex;gap:8px;margin-top:12px}
+  .btn{padding:10px 14px;border-radius:8px;border:none;cursor:pointer;font-weight:600;background:linear-gradient(90deg,var(--accent2),var(--accent1));color:white;box-shadow:0 8px 20px rgba(7,18,29,0.5)}
+  .btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.04); color:var(--muted); font-weight:600}
+  /* Right column */
+  .bio{line-height:1.6;color:#d9e9fb}
+  .stats{display:flex;gap:12px;margin-top:12px}
+  .stat{flex:1;padding:14px;border-radius:10px;background:var(--glass);text-align:center}
+  .stat strong{display:block;font-size:18px;color:white}
+  /* Chatbot */
+  .chatbot{position:fixed;right:20px;bottom:20px;width:360px;max-width:calc(100% - 40px);z-index:200;transform:translateY(0);}
+  .chat-widget{border-radius:14px;overflow:hidden;box-shadow:0 20px 60px rgba(2,6,23,0.6);background:linear-gradient(180deg,#071224,#041028);border:1px solid rgba(255,255,255,0.03);}
+  .chat-header{display:flex;align-items:center;gap:12px;padding:12px 14px;background:linear-gradient(90deg,var(--accent1),var(--accent2));color:white}
+  .chat-messages{max-height:300px;overflow:auto;padding:12px;display:flex;flex-direction:column;gap:8px}
+  .msg{max-width:85%;padding:10px 12px;border-radius:10px;background:rgba(255,255,255,0.03);color:#dbeeff;line-height:1.4;font-size:14px}
+  .msg.user{align-self:flex-end;background:linear-gradient(90deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))}
+  .chat-input{display:flex;padding:10px;border-top:1px solid rgba(255,255,255,0.02);gap:8px;background:transparent}
+  .chat-input input{flex:1;padding:10px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);background:transparent;color:#e8f6ff}
+  .chip{display:inline-block;padding:6px 8px;border-radius:999px;background:rgba(255,255,255,0.03);margin:6px 6px 0 0;cursor:pointer;font-size:13px}
+  /* highlight effect when clicking */
+  .highlight{background:linear-gradient(90deg, rgba(124,58,237,0.12), rgba(6,182,212,0.08)); border-left:4px solid rgba(124,58,237,0.6); padding-left:12px}
+  footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+  @media (max-width:880px){.grid{grid-template-columns:1fr;}.chatbot{right:12px;left:12px;width:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="grid">
+    <aside class="card">
+      <div class="profile">
+        <div class="avatar">WY</div>
+        <h1>Waqar Yousaf</h1>
+        <p class="lead">Data Analyst • Database Administrator</p>
+      </div>
+
+      <div class="contact section">
+        <div class="title"><h2>Contact</h2></div>
+        <div style="margin-top:8px;color:var(--muted)">
+          <div><strong>Phone:</strong> 0324-4237926</div>
+          <div><strong>Email:</strong> <a href="mailto:waqar.yousaf999@gmail.com">waqar.yousaf999@gmail.com</a></div>
+          <div><strong>Location:</strong> Lahore, Pakistan</div>
+          <div style="margin-top:8px"><a href="https://github.com/waqaryousaf99" target="_blank">GitHub / waqaryousaf99</a></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="title"><h2>Skills</h2></div>
+        <div class="skills" id="skills">
+          <div class="skill" data-key="mysql">MySQL</div>
+          <div class="skill" data-key="sql">SQL</div>
+          <div class="skill" data-key="excel">Advanced Excel</div>
+          <div class="skill" data-key="powerbi">Power BI</div>
+          <div class="skill" data-key="linux">Linux</div>
+          <div class="skill" data-key="python">Python</div>
+          <div class="skill" data-key="html">HTML5</div>
+          <div class="skill" data-key="reporting">Reporting</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="title"><h2>Certifications</h2></div>
+        <div style="margin-top:8px;color:var(--muted)">MySQL Database Administration (in progress)</div>
+      </div>
+
+      <div class="section actions">
+        <button class="btn" id="downloadBtn">Download CV</button>
+        <button class="btn ghost" id="contactBtn">Contact</button>
+      </div>
+    </aside>
+
+    <main class="card">
+      <div class="title"><h2>Professional Summary</h2></div>
+      <div class="bio">
+        <p id="summary">Experienced IT professional with 8 years in the industry, including 6 years as a Data Analyst and 1 year as a Database Administrator. Skilled in database management, data-driven reporting, and ensuring data accuracy and system reliability.</p>
+
+        <div class="stats" style="margin-top:12px">
+          <div class="stat"><strong>8 yrs</strong><div style="color:var(--muted)">Industry Experience</div></div>
+          <div class="stat"><strong>6 yrs</strong><div style="color:var(--muted)">Data Analysis</div></div>
+          <div class="stat"><strong>MySQL</strong><div style="color:var(--muted)">DBA Experience</div></div>
+        </div>
+
+        <div class="section" style="margin-top:18px">
+          <div class="title"><h2>Work Experience</h2></div>
+          <div class="job"><strong>Manager Reporting & Analytics</strong> — Highnoon Labs (Mar 2024 – Present)
+            <small>Database development, reporting, query languages, data visualization.</small></div>
+
+          <div class="job"><strong>Database Administrator</strong> — Khazana Enterprise (Aug 2022 – Feb 2024)
+            <small>Backups, replication, ETL, MySQL on Linux, large-data handling.</small></div>
+
+          <div class="job"><strong>Data Analyst</strong> — Ferozsons Laboratories Ltd. (Aug 2016 – Jan 2022)
+            <small>Advanced Excel reporting, Salesforce admin, SQL-based analysis.</small></div>
+        </div>
+
+        <div class="section" style="margin-top:18px">
+          <div class="title"><h2>Projects & Highlights</h2></div>
+          <ul style="margin-top:8px;color:var(--muted)">
+            <li>Built automated reporting pipelines and dashboards.</li>
+            <li>Managed MySQL databases on Linux servers, backups and replication.</li>
+            <li>Improved reporting accuracy and performance.</li>
+          </ul>
+        </div>
+
+      </div>
+      <footer>Made with ❤️ • Click any skill to highlight related info • Chat with the AI (bottom-right)</footer>
+    </main>
+  </div>
+</div>
+
+<!-- Chatbot (simple rule-based "AI") -->
+<div class="chatbot" id="chatbot">
+  <div class="chat-widget" role="dialog" aria-label="Resume chatbot">
+    <div class="chat-header">
+      <div style="font-weight:700">Resume Assistant</div>
+      <div style="margin-left:auto;color:rgba(255,255,255,0.9);font-size:13px">Ask about my CV</div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg" role="note">Hello! Ask me about my skills, experience, or contact details. Try: "Tell me about your DBA experience" or click a suggested question below.</div>
+      <div style="padding:8px 12px"><span class="chip" data-q="What is your experience?">What is your experience?</span><span class="chip" data-q="Tell me about DBA experience">DBA experience</span><span class="chip" data-q="What skills do you have?">Skills</span></div>
+    </div>
+    <div class="chat-input">
+      <input id="chatInput" placeholder="Type your question..." aria-label="Type question"/>
+      <button class="btn" id="sendBtn">Ask</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Skill click -> highlight relevant sections & make more visible
+document.querySelectorAll('.skill').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.skill').forEach(s=>s.classList.remove('active'));
+    el.classList.add('active');
+    // highlight summary and related job items
+    const key = el.dataset.key;
+    // remove existing highlights
+    document.querySelectorAll('.job').forEach(j=>j.classList.remove('highlight'));
+    document.getElementById('summary').classList.remove('highlight');
+    if(key === 'mysql' || key === 'sql' || key==='linux') {
+      document.getElementById('summary').classList.add('highlight');
+      document.querySelectorAll('.job')[1].classList.add('highlight'); // DBA job
+    } else if(key === 'excel' || key==='powerbi' || key==='reporting') {
+      document.querySelectorAll('.job')[0].classList.add('highlight'); // current job
+      document.getElementById('summary').classList.add('highlight');
+    } else {
+      document.getElementById('summary').classList.add('highlight');
+    }
+  });
+});
+
+// Download CV button - generates simple text/pdf download (uses a hidden blob)
+document.getElementById('downloadBtn').addEventListener('click', ()=>{
+  const text = `Waqar Yousaf - Resume
+
+Professional Summary:
+${document.getElementById('summary').innerText}
+
+Contact: waqar.yousaf999@gmail.com | 0324-4237926`;
+  const blob = new Blob([text], {type:'text/plain'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = 'Waqar_Yousaf_Resume.txt'; document.body.appendChild(a); a.click(); a.remove();
+  URL.revokeObjectURL(url);
+});
+
+// Chatbot - simple rule-based responses based on keywords in the question
+const chatMessages = document.getElementById('chatMessages');
+function addMessage(text, cls='') {
+  const d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = text; chatMessages.appendChild(d); chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+function answerQuestion(q) {
+  const ql = q.toLowerCase();
+  if(ql.includes('dba') || ql.includes('database') || ql.includes('mysql')) {
+    addMessage('I have 1 year experience as a Database Administrator working on MySQL in Linux-based environments. I handled backups, replication, ETL and large-data tasks.');
+  } else if(ql.includes('experience') || ql.includes('years')) {
+    addMessage('I have 8 years in IT with 6 years focused on data analysis and reporting. I worked as Manager Reporting & Analytics and as a DBA previously.');
+  } else if(ql.includes('skills') || ql.includes('skill')) {
+    addMessage('Key skills: MySQL, MSSQL, Advanced Excel, Power BI, Linux, SQL, Reporting, HTML5, Python (basic).');
+  } else if(ql.includes('contact') || ql.includes('email') || ql.includes('phone')) {
+    addMessage('You can contact me at waqar.yousaf999@gmail.com or call 0324-4237926.');
+  } else if(ql.includes('certif') || ql.includes('course')) {
+    addMessage('I am currently pursuing a MySQL Database Administration certification to strengthen my DBA skills.');
+  } else {
+    addMessage("Sorry, I didn't understand fully. Try asking about 'DBA experience', 'skills', or 'contact'.");
+  }
+}
+
+// event handlers
+document.getElementById('sendBtn').addEventListener('click', ()=>{
+  const q = document.getElementById('chatInput').value.trim();
+  if(!q) return;
+  addMessage(q, 'user');
+  setTimeout(()=>answerQuestion(q), 600);
+  document.getElementById('chatInput').value='';
+});
+document.getElementById('chatInput').addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ document.getElementById('sendBtn').click(); }});
+document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click', ()=>{ const txt = ch.dataset.q; addMessage(txt, 'user'); setTimeout(()=>answerQuestion(txt),300); }));
+
+// Contact button -> open mailto
+document.getElementById('contactBtn').addEventListener('click', ()=>{
+  window.location.href = 'mailto:waqar.yousaf999@gmail.com?subject=Opportunity%20to%20connect';
+});
+</script>
+</body>
+</html>
